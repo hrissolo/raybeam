@@ -1,36 +1,49 @@
-export const speech = "We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defense, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America."
-export const speechArray = speech.split(" ");
+var xValues = ["April/March", "May", "June", "July", "August", "Sept/Oct"];
+var yValues = [0,.1,.2,.3,.4];
+var barColors = ["red", "green","blue","orange","yellow"];
 
-let counterT = 0;
-for (let i=0; i < speechArray.length; i++) {
-    if (speechArray[i].startsWith("t")) {
-        counterT++
-    }
-    else if (speechArray[i].startsWith("T")) {
-        counterT++
-    }
-}
+new Chart("chart_0", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{ 
+      data: [.225,.346,.287,.262,.336,.343],
+      borderColor: "red",
+      label: "Joe Mauer",
+      fill: false
+    }, { 
+      data: [.147,.254,.184,.387,.324,.27],
+      borderColor: "green",
+      label: "Byron Buxton",
+      fill: false
+    }, { 
+      data: [.242,.255,.25,.24,.319,.308],
+      borderColor: "blue",
+      label: "Brian Dozier",
+      fill: false
+    }, { 
+        data: [.268,.269,.291,.321,.307,.276],
+        borderColor: "orange",
+        label: "Eddie Rosario",
+        fill: false
+      }, { 
+        data: [.242,.26,.243,.26,.28,.269],
+        borderColor: "yellow",
+        label: "Minnesota Twins",
+        fill: false
+      }]
+  },
+  options: {
+    labels:
+    {
+        display: true,
+        text: yValues
+    },
+    title: {
+        display: true,
+        text: "2017 Monthly Batting Average Trends"
+      }
+  }
+});
 
-let counterE = 0;
-for (let i=0; i < speechArray.length; i++) {
-    if (speechArray[i].endsWith("e")) {
-        counterE++
-    }
-    else if (speechArray[i].endsWith("e,")) {
-        counterE++
-    }
-}
-
-let counterBoth = 0;
-for (let i=0; i < speechArray.length; i++) {
-    if (speechArray[i].endsWith("e") && (speechArray[i].startsWith("t"))) { 
-        counterBoth++
-    } 
-}
-
-const wordCountTest = `The speech has ${speechArray.length} words. <br>
-    There are <b>${counterT}</b> words starting with the letter T. <br>
-    There are <b>${counterE}</b> words ending with the letter E. <br>
-    There are <b>${counterBoth}</b> words both starting with T & ending with E.`
-
-document.getElementById("wordCounter").innerHTML = wordCountTest;
+document.getElementById("chart_0").innerHTML = chart_0;
