@@ -16,3 +16,10 @@ body {
     position: relative;
     right: 0;
 }
+
+h1 {
+    font-family: 'Graduate', cursive;
+    max-width: 800px;
+    color: white;
+    background-color: #00265B;
+}
